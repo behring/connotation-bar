@@ -8,4 +8,5 @@ start.sh
 *~
 *.swp
 .idea
-.idea/workspace.xml
+scrapy_spider/resources
+.DS_Store

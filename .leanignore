@@ -3,3 +3,5 @@
 .leancloud/
 node_modules/
 .idea/
+scrapy_spider/resources/
+.DS_Store
