@@ -47,3 +47,5 @@ router.get('/', wechat(config, function (req, res, next) {
     ]);
   }
 }));
+
+module.exports = router;
