@@ -40,6 +40,16 @@ class Base extends AV.Object {
     const query = new AV.Query(this);
     return query.get(id);
   }
+
+  static pagination(page, count = 20) {
+    if(page > 0 && count > 0) {
+      const query = new AV.Query(this);
+      query.skip((page - 1) * count);
+      query.limit(count);
+      return query.find();
+    }
+
+  }
 }
 
 module.exports = Base;
