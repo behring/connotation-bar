@@ -9,6 +9,7 @@ import scrapy
 
 class CartoonItem(scrapy.Item):
     # define the fields for your item here like:
+    number = scrapy.Field()
     title = scrapy.Field()
     link = scrapy.Field()
     category = scrapy.Field()

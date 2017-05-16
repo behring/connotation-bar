@@ -48,7 +48,11 @@ class Base extends AV.Object {
       query.limit(count);
       return query.find();
     }
+  }
 
+  static count() {
+    const query = new AV.Query(this);
+    return query.count();
   }
 }
 
