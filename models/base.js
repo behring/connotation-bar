@@ -8,7 +8,7 @@ function capitalizeFirstLetter(string) {
 }
 
 class Base extends AV.Object {
-  static create(attrs) {
+  static createByRelation(attrs) {
     const obj = new this();
     Object.keys(attrs).forEach(k => {
       if (k.endsWith("Id")){
@@ -17,6 +17,14 @@ class Base extends AV.Object {
       } else {
         obj.set(k, attrs[k])
       }
+    });
+    return obj.save();
+  }
+
+  static create(attrs) {
+    const obj = new this();
+    Object.keys(attrs).forEach(k => {
+      obj.set(k, attrs[k])
     });
     return obj.save();
   }
@@ -48,6 +56,14 @@ class Base extends AV.Object {
       query.limit(count);
       return query.find();
     }
+  }
+
+
+  static update(obj, attrs) {
+    Object.keys(attrs).forEach(k => {
+      obj.set(k, attrs[k])
+    });
+    obj.save();
   }
 
   static count() {

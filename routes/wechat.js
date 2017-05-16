@@ -11,7 +11,7 @@ let config = {
   checkSignature: false // 可选，默认为true。由于微信公众平台接口调试工具在明文模式下不发送签名，所以如要使用该测试工具，请将其设置为false
 };
 
-let textAnalysis = require('../utils/text-analysis');
+let utils = require('../utils/utils');
 
 router.use('/', wechat(config, function (req, res, next) {
   // 微信输入信息都在req.weixin上
@@ -19,18 +19,17 @@ router.use('/', wechat(config, function (req, res, next) {
   if (message.MsgType === 'event' && message.Event === 'subscribe') {
     res.reply('感谢您订阅"内涵吧"\n请回复数字选择您感兴趣的节目:\n1 内涵漫画\n2 幽默笑话\n3 脑筋急转弯\n4.在线听歌');
   }else if(message.MsgType==='text') {
-    // res.reply('你账号为：' + message.FromUserName);
-    textAnalysis.analyseText(message.Content).then(cartoon => {
-      res.reply([
-        {
-          title: cartoon.get('category'),
-          description: cartoon.get('title'),
-          picurl: cartoon.get('link'),
-          url: baseUrl + '/cartoons/' + cartoon.get('number')
+    if (utils.isValidText(message.Content)) {
+      utils.isLimitVisitCartoonByUser(message.FromUserName).then((results) => {
+        if(results.isLimit) {
+          res.reply('每天最多看三篇漫画哦，签到后可提高每天查看上限');
+        }else {
+          utils.replayRandomCartoonToUser(res, results.user);
         }
-      ]);
-    });
-
+      }).catch(error => console.error(error));
+    } else {
+      res.reply('嘿嘿，看不懂~~~');
+    }
   }else if(message.MsgType==='image') {
     res.reply('这图....我也是醉了~~');
   }else if(message.MsgType==='voice') {

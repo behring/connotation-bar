@@ -30,8 +30,6 @@ router.get('/:number', function(req, res, next) {
       }, error => {
         console.error(error);
         next(error);
-      }).catch(error => {
-        console.error(error);
       });
     }
   });
