@@ -1,3 +1,29 @@
+/* 小屏幕（平板，大于等于 768px @screen-sm-min） */
+@media (max-width: 768px) {
+  #navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+  }
+
+  #logo {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px @screen-md-min） */
+@media (max-width: 992px) {
+
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px @screen-lg-min） */
+@media (max-width: 1200px) {
+
+}
+
 .container {
   padding: 12px;
 }
+
