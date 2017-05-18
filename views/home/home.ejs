@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <% include partials/head.ejs %>
+    <% include ../partials/head.ejs %>
 </head>
 <body>
-<% include partials/nav.ejs %>
+<% include ../partials/nav.ejs %>
 
 <div class="container">
   <div>
@@ -13,7 +13,7 @@
         <% for(var i=0; i< cartoons.length; i++) {%>
       <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
           <% var cartoon = cartoons[i]; %>
-          <% include partials/grid-item.ejs %>
+          <% include ../partials/grid-item.ejs %>
       </div>
         <% } %>
     </div>
@@ -24,6 +24,6 @@
     <p><%= cartoons.length %> </p>
   </div>
 </div>
-<% include partials/footer.ejs %>
+<% include ../partials/footer.ejs %>
 </body>
 </html>

@@ -36,18 +36,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.get('/', function(req, res) {
-    let Cartoon = require('./models/cartoon');
-    Cartoon.pagination(1,24).then(cartoons => {
-        res.render('index', { cartoons: cartoons });
-    });
-
-});
-
 // 可以将一类的路由单独保存在一个文件中
-app.use('/todos', require('./routes/todos'));
+app.use('/', require('./routes/home'));
+app.use('/sign-in', require('./routes/sign-in'));
+app.use('/sign-up', require('./routes/sign-up'));
 app.use('/cartoons', require('./routes/cartoons'));
 app.use('/wechat', require('./routes/wechat'));
+app.use('/todos', require('./routes/todos'));
 
 app.use(function(req, res, next) {
     // 如果任何一个路由都没有返回响应，则抛出一个 404 异常给后续的异常处理器
