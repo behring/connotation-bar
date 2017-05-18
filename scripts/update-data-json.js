@@ -1,5 +1,11 @@
 var AV = require('leanengine');
-let cartoonJson = require('../scrapy_spider/crawl-data.json');
+let sexiJson = require('../scrapy_spider/sexi.json');
+let myymfJson = require('../scrapy_spider/myymf.json');
+let gfsdfJson = require('../scrapy_spider/gfsd.json');
+let mlyzJson = require('../scrapy_spider/mlyz.json');
+
+
+let resultJson = require('../data/Cartoon.json');
 let File = require('../models/file');
 var fs = require('fs');
 
@@ -8,7 +14,7 @@ AV.init({
     appKey: 'PSvkSKv6TkBRJFOFpG2BXM9q'
 });
 
-var newCartoonJson = [];
+var newCartoonJson = resultJson;
 var index = 0;
 function getFile(cartoon) {
     if(cartoon) {
@@ -18,7 +24,7 @@ function getFile(cartoon) {
             newCartoonJson.push(Object.assign({},cartoon,{qiniu_url: file.get('url')} ));
             fs.writeFileSync('./data/Cartoon.json', JSON.stringify(newCartoonJson) , 'utf-8');
             index++;
-            getFile(cartoonJson[index]);
+            getFile(mlyzJson[index]);
         });
     }else {
         console.info('update finish!');
@@ -26,5 +32,5 @@ function getFile(cartoon) {
 
 }
 
-getFile(cartoonJson[index]);
+getFile(mlyzJson[index]);
 
