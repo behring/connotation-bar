@@ -15,7 +15,7 @@ function replayRandomCartoonToUser(res, user) {
         {
           title: cartoon.get('category'),
           description: cartoon.get('title'),
-          picurl: cartoon.get('link'),
+          picurl: cartoon.get('qiniu_url')+previewThumbnail,
           url: baseUrl + '/cartoons/' + cartoon.get('number')
         }
       ]);

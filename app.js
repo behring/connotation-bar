@@ -7,8 +7,8 @@ var bodyParser = require('body-parser');
 var AV = require('leanengine');
 var morgan = require('morgan');
 global.appRoot = path.resolve(__dirname);
-
 global.baseUrl = 'http://connotation-bar.leanapp.cn';
+global.previewThumbnail = '?imageMogr2/thumbnail/400/crop/400x300';
 
 // 加载云函数定义，你可以将云函数拆分到多个文件方便管理，但需要在主文件中加载它们
 require('./cloud');
@@ -70,7 +70,7 @@ app.use(function(err, req, res, next) {
   }
   res.status(statusCode);
   // 默认不输出异常详情
-  var error = {}
+  var error = {};
   if (app.get('env') === 'development') {
     // 如果是开发环境，则将异常堆栈输出到页面，方便开发调试
     error = err;

@@ -13,7 +13,7 @@ class CartoonSpider(scrapy.Spider):
         item = CartoonItem()
         item['number'] = CartoonSpider.number
         item['title'] = response.xpath('//h1/text()').extract_first()
-        item['link'] = response.xpath("//div[@id='imgshowdiv']//img/@src").extract_first()
+        item['original_url'] = response.xpath("//div[@id='imgshowdiv']//img/@src").extract_first()
         item['category'] = response.xpath("//div[@id='imgshowdiv']/b/a/text()").extract_first()
         CartoonSpider.number += 1
         yield item

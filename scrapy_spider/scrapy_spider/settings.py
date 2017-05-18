@@ -66,11 +66,17 @@ ROBOTSTXT_OBEY = True
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
 #    'scrapy_spider.pipelines.SomePipeline': 300,
-#'scrapy_spider.pipelines.CartoonImagePipeline': 1
+    'scrapy_spider.pipelines.CartoonImagePipeline': 1
 }
 IMAGES_STORE = './resources/cartoon'
 # 90天的图片失效期限
 IMAGES_EXPIRES = 30
+
+#知道图片宽高比情况生成缩略图
+#IMAGES_THUMBS = {
+#    'small': (200, 150),
+#    'big': (400, 300)
+#}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html

@@ -23,7 +23,21 @@
 
 }
 
-.container {
-  padding: 12px;
+.thumbnail > .caption > span {
+  display: block;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  -o-text-overflow:ellipsis;
+  white-space:nowrap;
+  width:100%;
 }
 
+#grid-item {
+  padding: 0 10px;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.8rem;
+  color: darkgray;
+}
