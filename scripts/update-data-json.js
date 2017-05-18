@@ -3,6 +3,7 @@ let sexiJson = require('../scrapy_spider/sexi.json');
 let myyfmJson = require('../scrapy_spider/myyfm.json');
 let gfsdfJson = require('../scrapy_spider/gfsd.json');
 let mlyzJson = require('../scrapy_spider/mlyz.json');
+let sexiaozuJson = require('../scrapy_spider/sexiaozu.json');
 
 
 let resultJson = require('../data/Cartoon.json');
@@ -24,7 +25,7 @@ function getFile(cartoon) {
             newCartoonJson.push(Object.assign({},cartoon,{qiniu_url: file.get('url')} ));
             fs.writeFileSync('./data/Cartoon.json', JSON.stringify(newCartoonJson) , 'utf-8');
             index++;
-            getFile(mlyzJson[index]);
+            getFile(sexiaozuJson[index]);
         });
     }else {
         console.info('update finish!');
@@ -32,5 +33,5 @@ function getFile(cartoon) {
 
 }
 
-getFile(mlyzJson[index]);
+getFile(sexiaozuJson[index]);
 

@@ -10,7 +10,7 @@ class CartoonSpider(scrapy.Spider):
     #first page url http://xiaojiulou.moli8.com/sexi/6806.html
     #last page url http://xiaojiulou.moli8.com/sexi/430.html
 
-    #ant and 蜂蜜(myyfm) 46 sheet
+    #ant and honey(myyfm) 46 sheet
     #first page url http://xiaojiulou.moli8.com/myyfm/1790.html
     #last page url http://xiaojiulou.moli8.com/myyfm/1745.html
 
@@ -22,8 +22,11 @@ class CartoonSpider(scrapy.Spider):
     #first page url http://xiaojiulou.moli8.com/mlyz/14-09/13/1714.html
     #last page url http://xiaojiulou.moli8.com/mlyz/14-09/13/1701.html
 
+    #sexiaozu
+    #first page url http://xiaojiulou.moli8.com/sexiaozu/13-08/06/2775.html
+    #last page url http://xiaojiulou.moli8.com/sexiaozu/12-11/09/443.html
     start_urls = [
-        "http://xiaojiulou.moli8.com/mlyz/14-09/13/1714.html"
+        "http://xiaojiulou.moli8.com/sexiaozu/13-08/06/2775.html"
     ]
 
     def parse(self, response):
