@@ -54,8 +54,6 @@ class Base extends AV.Object {
                 query.equalTo(k, attrs[k])
             }
         });
-
-
         return query.first();
     }
 

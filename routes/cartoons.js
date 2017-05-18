@@ -17,17 +17,20 @@ router.get('/', function(req, res) {
     });
 });
 
-router.get('/:number', function(req, res, next) {
-    let number = req.params.number;
+router.get('/:category/:number', function(req, res, next) {
+    let category = req.params.category;
+    let number = parseInt(req.params.number);
+
+    console.log(category);
+    console.log(number);
+
     res.format({
         'text/html': function(){
-            Cartoon.findByNumber(number).then(cartoon => {
+            Cartoon.queryOneBy({category, number}).then(cartoon => {
                 res.render('cartoons/show', {
-                    title: cartoon.get('title'),
-                    category: cartoon.get('category'),
-                    qiniu_url: cartoon.get('qiniu_url')
+                    cartoon: cartoon
                 });
-            }, error => {
+            }).catch(error => {
                 console.error(error);
                 next(error);
             });
@@ -35,5 +38,20 @@ router.get('/:number', function(req, res, next) {
     });
 });
 
+router.get('/:category', function(req, res, next) {
+    let category = req.params.category;
+    res.format({
+        'text/html': function(){
+            Cartoon.queryBy({category}).then(cartoons => {
+                res.render('cartoons/index', {
+                    cartoons: cartoons
+                });
+            }).catch(error => {
+                console.error(error);
+                next(error);
+            });
+        }
+    });
+});
 
 module.exports = router;

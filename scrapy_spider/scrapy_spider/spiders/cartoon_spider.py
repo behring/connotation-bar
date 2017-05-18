@@ -10,7 +10,7 @@ class CartoonSpider(scrapy.Spider):
     #first page url http://xiaojiulou.moli8.com/sexi/6806.html
     #last page url http://xiaojiulou.moli8.com/sexi/430.html
 
-    #ant and bee(myymf) 46 sheet
+    #ant and 蜂蜜(myyfm) 46 sheet
     #first page url http://xiaojiulou.moli8.com/myyfm/1790.html
     #last page url http://xiaojiulou.moli8.com/myyfm/1745.html
 

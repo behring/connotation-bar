@@ -2,13 +2,13 @@
 <html>
 <head>
     <link rel="stylesheet" href="/stylesheets/cartoons/show.css">
-    <title><%= category %></title>
+    <title><%= cartoon.get('category') %></title>
     <% include ../partials/head.ejs %>
 </head>
 <body class="cartoon show">
 <div class="container center">
-    <h3><%= title %></h3>
-    <img src=<%= qiniu_url %>>
+    <h3><%= cartoon.get('title') %></h3>
+    <img src="<%= cartoon.get('qiniu_url') %>">
 </div>
 </body>
 </html>

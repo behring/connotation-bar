@@ -1,6 +1,6 @@
 var AV = require('leanengine');
 let sexiJson = require('../scrapy_spider/sexi.json');
-let myymfJson = require('../scrapy_spider/myymf.json');
+let myyfmJson = require('../scrapy_spider/myyfm.json');
 let gfsdfJson = require('../scrapy_spider/gfsd.json');
 let mlyzJson = require('../scrapy_spider/mlyz.json');
 
