@@ -20,6 +20,9 @@ app.use(morgan('combined'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+//需要此中间件才能获取req.currentUser  https://leancloud.cn/docs/leanengine-node-sdk-upgrade-1.html#废弃_currentUser
+app.use(AV.Cloud.CookieSession({ secret: '92383dc3f56968cd747e89659c8909956f2836ccb8b941c45016d466c4d563802e9aea0073f139eef75abc99f4a63eb0d86e302a71875c56005e77f9b6bbf6ab', maxAge: 3600000, fetchUser: true }));
+
 app.use(express.static('public'));
 
 // 设置默认超时时间
@@ -40,6 +43,7 @@ app.use(cookieParser());
 app.use('/', require('./routes/home'));
 app.use('/sign-in', require('./routes/sign-in'));
 app.use('/sign-up', require('./routes/sign-up'));
+app.use('/sign-out', require('./routes/sign-out'));
 app.use('/cartoons', require('./routes/cartoons'));
 app.use('/wechat', require('./routes/wechat'));
 app.use('/todos', require('./routes/todos'));
