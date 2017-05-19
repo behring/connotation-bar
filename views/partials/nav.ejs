@@ -11,8 +11,13 @@
                 内涵吧
                 <!--<img alt="Brand" src="">-->
             </a>
-
+            <%if (user) { %>
+            <button class="visible-xs btn btn-link"><a href="/sign-out">退出</a></button>
+            <%} else {%>
             <button class="visible-xs btn btn-link"><a href="/sign-in">登录</a></button>
+            <% } %>
+
+
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
