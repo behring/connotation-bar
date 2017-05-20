@@ -1,9 +1,9 @@
 import scrapy
-from scrapy_spider.items import CartoonItem
+from scrapy_spider.items import PictureItem
 
-class CartoonSpider(scrapy.Spider):
+class PictureSpider(scrapy.Spider):
     number = 0
-    name = "cartoon"
+    name = "picture"
     allowed_domains = ["xiaojiulou.moli8.com"]
 
     #sexi 1948 sheet
@@ -30,14 +30,14 @@ class CartoonSpider(scrapy.Spider):
     ]
 
     def parse(self, response):
-        item = CartoonItem()
-        item['number'] = CartoonSpider.number
+        item = PictureItem()
+        item['number'] = PictureSpider.number
         item['title'] = response.xpath('//h1/text()').extract_first()
         item['original_url'] = response.xpath("//div[@id='imgshowdiv']//img/@src").extract_first()
         item['category'] = response.xpath("//div[@id='imgshowdiv']/b/a/text()").extract_first()
-        CartoonSpider.number += 1
+        PictureSpider.number += 1
         yield item
-        #previousPageUrl = 'http://' + CartoonSpider.allowed_domains[0] + response.xpath("//div[@class='zw_page1']/a/@href").extract_first()
+        #previousPageUrl = 'http://' + PictureSpider.allowed_domains[0] + response.xpath("//div[@class='zw_page1']/a/@href").extract_first()
         #yield scrapy.Request(previousPageUrl, callback=self.parse)
-        nextPageUrl = 'http://' + CartoonSpider.allowed_domains[0] + response.xpath("//div[@class='zw_page3']/a/@href").extract_first()
+        nextPageUrl = 'http://' + PictureSpider.allowed_domains[0] + response.xpath("//div[@class='zw_page3']/a/@href").extract_first()
         yield scrapy.Request(nextPageUrl, callback=self.parse)

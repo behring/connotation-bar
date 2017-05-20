@@ -7,7 +7,7 @@
 
 import scrapy
 
-class CartoonItem(scrapy.Item):
+class PictureItem(scrapy.Item):
     # define the fields for your item here like:
     number = scrapy.Field()
     title = scrapy.Field()

@@ -6,7 +6,7 @@ let mlyzJson = require('../scrapy_spider/mlyz.json');
 let sexiaozuJson = require('../scrapy_spider/sexiaozu.json');
 
 
-let resultJson = require('../data/Cartoon.json');
+let resultJson = require('../data/Picture.json');
 let File = require('../models/file');
 var fs = require('fs');
 
@@ -15,15 +15,15 @@ AV.init({
     appKey: 'PSvkSKv6TkBRJFOFpG2BXM9q'
 });
 
-var newCartoonJson = resultJson;
+var newPictureJson = resultJson;
 var index = 0;
-function getFile(cartoon) {
-    if(cartoon) {
-        File.queryOneBy({name: cartoon.file_name}).then((file)=>{
+function getFile(picture) {
+    if(picture) {
+        File.queryOneBy({name: picture.file_name}).then((file)=>{
             console.info('query finish');
             console.log(file.get('url'));
-            newCartoonJson.push(Object.assign({},cartoon,{qiniu_url: file.get('url')} ));
-            fs.writeFileSync('./data/Cartoon.json', JSON.stringify(newCartoonJson) , 'utf-8');
+            newPictureJson.push(Object.assign({},picture,{qiniu_url: file.get('url')} ));
+            fs.writeFileSync('./data/Picture.json', JSON.stringify(newPictureJson) , 'utf-8');
             index++;
             getFile(sexiaozuJson[index]);
         });

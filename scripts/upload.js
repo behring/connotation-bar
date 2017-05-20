@@ -5,7 +5,7 @@ AV.init({
     appId: 'qhJNhVXqGVUzKMhsEmddftqd-gzGzoHsz',
     appKey: 'PSvkSKv6TkBRJFOFpG2BXM9q'
 });
-var resouresDir =  './scrapy_spider/resources/cartoon/full/';
+var resouresDir =  './scrapy_spider/resources/picture/full/';
 var files = fs.readdirSync(resouresDir);
 
 files.map((file,index) => {

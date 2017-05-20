@@ -15,7 +15,7 @@ class WechatUser extends Base {
         if(user) {
           resolve(user);
         }else {
-          this.create({openId: openId, visitedCartoonCount: 0}).then(user => {
+          this.create({openId: openId, visitedPictureCount: 0}).then(user => {
             resolve(user);
           }).catch(error => reject(error));
         }

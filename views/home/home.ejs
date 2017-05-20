@@ -10,9 +10,9 @@
   <div>
     <h4>热门漫画</h4>
     <div class="row">
-        <% for(var i=0; i< cartoons.length; i++) {%>
+        <% for(var i=0; i< pictures.length; i++) {%>
       <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-          <% var cartoon = cartoons[i]; %>
+          <% var picture = pictures[i]; %>
           <% include ../partials/grid-item.ejs %>
       </div>
         <% } %>
@@ -21,7 +21,7 @@
 
   <div>
     <h4>搞笑动图</h4>
-    <p><%= cartoons.length %> </p>
+    <p><%= pictures.length %> </p>
   </div>
 </div>
 <% include ../partials/footer.ejs %>

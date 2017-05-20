@@ -1,8 +1,8 @@
-<a href="/cartoons/<%= cartoon.get('category') %>/<%= cartoon.get('number') %>">
+<a href="/pictures/<%= picture.get('category') %>/<%= picture.get('number') %>">
     <div class="thumbnail">
-        <img src=<%=cartoon.get('qiniu_url') + previewThumbnail %> alt="...">
+        <img src=<%=picture.get('qiniu_url') + previewThumbnail %> alt="...">
         <div class="caption">
-            <span><%= cartoon.get('title') %></span>
+            <span><%= picture.get('title') %></span>
         </div>
     </div>
 </a>

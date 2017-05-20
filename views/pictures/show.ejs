@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <link rel="stylesheet" href="/stylesheets/pictures/show.css">
+    <title><%= picture.get('category') %></title>
+    <% include ../partials/head.ejs %>
+</head>
+<body class="picture show">
+<div class="container center">
+    <h3><%= picture.get('title') %></h3>
+    <img src="<%= picture.get('qiniu_url') %>">
+</div>
+</body>
+</html>

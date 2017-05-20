@@ -1,23 +1,23 @@
 /**
  * Created by behring on 2017/5/16.
  */
-let Cartoon = require('.././models/cartoon');
+let Picture = require('../models/picture');
 let WechatUser = require('../models/wechat-user');
 
-const CONTENT_TYPE_CARTOON = 1;
+const CONTENT_TYPE_PICTURE = 1;
 
-function replayRandomCartoonToUser(res, user) {
-  Cartoon.count().then(count => {
+function replayRandomPictureToUser(res, user) {
+  Picture.count().then(count => {
     let category = '色系军团';
     let number = parseInt(Math.random()*count);
-    Cartoon.queryOneBy(category, number).then(cartoon => {
-      WechatUser.update(user,{'visitedCartoonCount': user.get('visitedCartoonCount') + 1});
+    Picture.queryOneBy(category, number).then(picture => {
+      WechatUser.update(user,{'visitedPictureCount': user.get('visitedPictureCount') + 1});
       res.reply([
         {
-          title: cartoon.get('category'),
-          description: cartoon.get('title'),
-          picurl: cartoon.get('qiniu_url')+previewThumbnail,
-          url: baseUrl + '/cartoons/'+category+'/'+number
+          title: picture.get('category'),
+          description: picture.get('title'),
+          picurl: picture.get('qiniu_url')+previewThumbnail,
+          url: baseUrl + '/pictures/'+category+'/'+number
         }
       ]);
     }).catch(error => console.error(error));
@@ -26,20 +26,20 @@ function replayRandomCartoonToUser(res, user) {
 }
 
 function isValidText(text) {
-  return parseInt(text.trim()) === CONTENT_TYPE_CARTOON;
+  return parseInt(text.trim()) === CONTENT_TYPE_PICTURE;
 }
 
-function isLimitVisitCartoonByUser(openId) {
+function isLimitVisitPictureByUser(openId) {
   return new Promise((resolve, reject) => {
     WechatUser.findOrCreateByOpenId(openId).then(user => {
-      let visitedCartoonCount = user.get('visitedCartoonCount');
-      resolve({isLimit: visitedCartoonCount && visitedCartoonCount >= 3, user: user});
+      let visitedICount = user.get('visitedPictureCount');
+      resolve({isLimit: visitedPictureCount && visitedPictureCount >= 3, user: user});
     }).catch(error => reject(error));
   });
 }
 
 module.exports = {
-  replayRandomCartoonToUser: replayRandomCartoonToUser,
+  replayRandomPictureToUser: replayRandomPictureToUser,
   isValidText: isValidText,
-  isLimitVisitCartoonByUser: isLimitVisitCartoonByUser
+  isLimitVisitPictureByUser: isLimitVisitPictureByUser
 };

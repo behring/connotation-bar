@@ -1,14 +1,14 @@
 'use strict';
 let router = require('express').Router();
-let Cartoon = require('.././models/cartoon');
+let Picture = require('../models/picture');
 
-// 查询 Cartoon 列表
+// 查询 Picture 列表
 router.get('/', function(req, res) {
     let params = req.query;
 
     res.format({
         'application/json': function(){
-            Cartoon.pagination(params.page, params.count).then((results)=>{
+            Picture.pagination(params.page, params.count).then((results)=>{
                 res.json(results);
             },(error)=>{
                 res.send(error);
@@ -26,9 +26,10 @@ router.get('/:category/:number', function(req, res, next) {
 
     res.format({
         'text/html': function(){
-            Cartoon.queryOneBy({category, number}).then(cartoon => {
-                res.render('cartoons/show', {
-                    cartoon: cartoon
+            Picture.queryOneBy({category, number}).then(picture => {
+                res.render('pictures/show', {
+                    picture: picture,
+                    user: req.currentUser
                 });
             }).catch(error => {
                 console.error(error);
@@ -42,9 +43,10 @@ router.get('/:category', function(req, res, next) {
     let category = req.params.category;
     res.format({
         'text/html': function(){
-            Cartoon.queryBy({category}).then(cartoons => {
-                res.render('cartoons/index', {
-                    cartoons: cartoons
+            Picture.queryBy({category}).then(pictures => {
+                res.render('pictures/index', {
+                    pictures: pictures,
+                    user: req.currentUser
                 });
             }).catch(error => {
                 console.error(error);

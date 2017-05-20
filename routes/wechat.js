@@ -20,11 +20,11 @@ router.use('/', wechat(config, function (req, res, next) {
     res.reply('感谢您订阅"内涵吧"\n请回复数字选择您感兴趣的节目:\n1 内涵漫画\n2 幽默笑话\n3 脑筋急转弯\n4.在线听歌');
   }else if(message.MsgType==='text') {
     if (utils.isValidText(message.Content)) {
-      utils.isLimitVisitCartoonByUser(message.FromUserName).then((results) => {
+      utils.isLimitVisitPictureByUser(message.FromUserName).then((results) => {
         if(results.isLimit) {
           res.reply('每天最多看三篇漫画哦，签到后可提高每天查看上限');
         }else {
-          utils.replayRandomCartoonToUser(res, results.user);
+          utils.replayRandomPictureToUser(res, results.user);
         }
       }).catch(error => console.error(error));
     } else {
