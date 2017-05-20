@@ -66,9 +66,11 @@ ROBOTSTXT_OBEY = True
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
 #    'scrapy_spider.pipelines.SomePipeline': 300,
-    'scrapy_spider.pipelines.PicturesPipeline': 1
+#    'scrapy_spider.pipelines.PicturesPipeline': 1,
+    'scrapy_spider.pipelines.FilePipeline': 1
 }
 IMAGES_STORE = './resources/picture'
+FILES_STORE = './resources/file'
 # 90天的图片失效期限
 IMAGES_EXPIRES = 30
 

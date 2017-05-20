@@ -7,6 +7,7 @@
 import scrapy
 import os.path
 from scrapy.pipelines.images import ImagesPipeline
+from scrapy.pipelines.files import FilesPipeline
 from scrapy_spider.items import PictureItem
 from PIL import Image
 
@@ -35,4 +36,17 @@ class PicturesPipeline(ImagesPipeline):
 #        cropImg = img.crop(region)
         item['file_name'] = os.path.basename(image_path)
 #        cropImg.save('./resources/picture/thumbs/'+ item['file_name'])
+        return item
+
+class FilePipeline(FilesPipeline):
+
+    def get_media_requests(self, item, info):
+        yield scrapy.Request(item['original_url'])
+
+    def item_completed(self, results, item, info):
+        image_paths = [x['path'] for ok, x in results if ok]
+        if not image_paths:
+            raise PictureItem("Item contains no images")
+        image_path = image_paths[0]
+        item['file_name'] = os.path.basename(image_path)
         return item
