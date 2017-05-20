@@ -2,8 +2,7 @@
  * Created by behring on 2017/5/17.
  */
 
-$('.dropdown-toggle').dropdown();
-$('.collapse').collapse();
+
 var options = {
     currentPage: 4,
     totalPages: 10,
@@ -25,5 +24,7 @@ var options = {
 };
 
 $(document).ready(function(){
+    $('.dropdown-toggle').dropdown();
+    $('.collapse').collapse();
     $('#paginator').bootstrapPaginator(options);
 });

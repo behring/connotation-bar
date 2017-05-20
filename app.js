@@ -24,8 +24,6 @@ app.set('view engine', 'ejs');
 //需要此中间件才能获取req.currentUser  https://leancloud.cn/docs/leanengine-node-sdk-upgrade-1.html#废弃_currentUser
 app.use(AV.Cloud.CookieSession({ secret: '92383dc3f56968cd747e89659c8909956f2836ccb8b941c45016d466c4d563802e9aea0073f139eef75abc99f4a63eb0d86e302a71875c56005e77f9b6bbf6ab', maxAge: 3600000, fetchUser: true }));
 
-app.use(express.static('public'));
-
 // 设置默认超时时间
 app.use(timeout('15s'));
 
@@ -48,15 +46,6 @@ app.use('/sign-out', require('./routes/sign-out'));
 app.use('/pictures', require('./routes/pictures'));
 app.use('/wechat', require('./routes/wechat'));
 app.use('/todos', require('./routes/todos'));
-
-app.use(function(req, res, next) {
-    // 如果任何一个路由都没有返回响应，则抛出一个 404 异常给后续的异常处理器
-    if (!res.headersSent) {
-        var err = new Error('Not Found');
-        err.status = 404;
-        next(err);
-    }
-});
 
 // error handlers
 app.use(function(err, req, res, next) {
