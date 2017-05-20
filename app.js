@@ -9,6 +9,7 @@ var morgan = require('morgan');
 global.appRoot = path.resolve(__dirname);
 global.baseUrl = 'http://connotation-bar.leanapp.cn';
 global.previewThumbnail = '?imageMogr2/thumbnail/400/crop/400x300';
+global.previewFirstFrame = '?vframe/jpg/offset/0/w/400/h/300';
 
 // 加载云函数定义，你可以将云函数拆分到多个文件方便管理，但需要在主文件中加载它们
 require('./cloud');

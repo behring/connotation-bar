@@ -20,8 +20,7 @@ var index = 0;
 function getFile(picture) {
     if(picture) {
         File.queryOneBy({name: picture.file_name}).then((file)=>{
-            console.info('query finish');
-            console.log(file.get('url'));
+            console.log(index + ': query finish! ' + file.get('url'));
             newPictureJson.push(Object.assign({},picture,{qiniu_url: file.get('url')} ));
             fs.writeFileSync('./data/Picture.json', JSON.stringify(newPictureJson) , 'utf-8');
             index++;

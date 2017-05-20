@@ -20,7 +20,7 @@ files.map((file,index) => {
                 var uploadFile = new AV.File(file, fileBuffer);
                 uploadFile.save().then(function(uploadedFile) {
                     // 文件保存成功
-                    console.log(uploadedFile.url());
+                    console.log(index + ': ' + uploadedFile.url());
                 }).catch(error => {
                     console.error(error);
                 });

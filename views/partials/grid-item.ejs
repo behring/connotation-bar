@@ -1,6 +1,10 @@
 <a href="/pictures/<%= picture.get('category') %>/<%= picture.get('number') %>">
     <div class="thumbnail">
+        <% if (picture.get('category').indexOf('动图')!=-1) { %>
+        <img src=<%=picture.get('qiniu_url') + previewFirstFrame %> alt="...">
+        <% } else {%>
         <img src=<%=picture.get('qiniu_url') + previewThumbnail %> alt="...">
+        <% } %>
         <div class="caption">
             <span><%= picture.get('title') %></span>
         </div>
