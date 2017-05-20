@@ -10,7 +10,7 @@ function replayRandomPictureToUser(res, user) {
   Picture.count().then(count => {
     let category = '色系军团';
     let number = parseInt(Math.random()*count);
-    Picture.queryOneBy(category, number).then(picture => {
+    Picture.queryOneBy({category, number}).then(picture => {
       WechatUser.update(user,{'visitedPictureCount': user.get('visitedPictureCount') + 1});
       res.reply([
         {
