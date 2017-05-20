@@ -24,8 +24,9 @@
     <span class="text-total-pages">共<%= totalPages %>页</span>
   </div>
 
-  <ul id="paginator" class="pager visible-xs">
+  <ul id="paginator" class="box-paginator pager visible-xs">
     <li class="previous"><a href="/pictures/<%=pictures[0].get('category')%>?page=<%= parseInt(currentPage)-1%>"><span>&larr;</span> 上一页</a></li>
+    <span class="text-total-pages">共<%= totalPages %>页</span>
     <li class="next"><a href="/pictures/<%=pictures[0].get('category')%>?page=<%= parseInt(currentPage)+1%>">下一页 <span>&rarr;</span></a></li>
   </ul>
 
