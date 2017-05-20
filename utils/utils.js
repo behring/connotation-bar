@@ -32,7 +32,7 @@ function isValidText(text) {
 function isLimitVisitPictureByUser(openId) {
   return new Promise((resolve, reject) => {
     WechatUser.findOrCreateByOpenId(openId).then(user => {
-      let visitedICount = user.get('visitedPictureCount');
+      let visitedPictureCount = user.get('visitedPictureCount');
       resolve({isLimit: visitedPictureCount && visitedPictureCount >= 3, user: user});
     }).catch(error => reject(error));
   });
