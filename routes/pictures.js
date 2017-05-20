@@ -41,16 +41,23 @@ router.get('/:category/:number', function(req, res, next) {
 
 router.get('/:category', function(req, res, next) {
     let category = req.params.category;
+    let page = req.query.page;
+
     res.format({
         'text/html': function(){
-            Picture.queryBy({category}).then(pictures => {
-                res.render('pictures/index', {
-                    pictures: pictures,
-                    user: req.currentUser
+            var perPage = 18;
+            Picture.count({category}).then(count => {
+                Picture.pagination(page, perPage ,{category}).then(pictures => {
+                    res.render('pictures/index', {
+                        pictures: pictures,
+                        user: req.currentUser,
+                        currentPage: page,
+                        totalPages: Math.ceil(count/18)
+                    });
+                }).catch(error => {
+                    console.error(error);
+                    next(error);
                 });
-            }).catch(error => {
-                console.error(error);
-                next(error);
             });
         }
     });

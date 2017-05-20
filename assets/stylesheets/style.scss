@@ -41,6 +41,17 @@
   padding: 0 10px;
 }
 
+.box-paginator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .text-total-pages {
+    padding: 0 20px;
+    font-size: 16px;
+  }
+}
+
 footer {
   text-align: center;
   font-size: 0.8rem;

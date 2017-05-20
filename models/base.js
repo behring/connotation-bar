@@ -62,9 +62,20 @@ class Base extends AV.Object {
         return query.get(id);
     }
 
-    static pagination(page, count = 20) {
+    static pagination(page, count = 20, attrs = undefined) {
         if(page > 0 && count > 0) {
             const query = new AV.Query(this);
+
+            if(attrs) {
+                Object.keys(attrs).forEach(k => {
+                    if (k.endsWith("Id")){
+                        const objClassName = k.replace(/Id$/, '');
+                        query.equalTo(objClassName, AV.Object.createWithoutData(capitalizeFirstLetter(objClassName), attrs[k]));
+                    } else {
+                        query.equalTo(k, attrs[k])
+                    }
+                });
+            }
             query.skip((page - 1) * count);
             query.limit(count);
             return query.find();
@@ -79,8 +90,13 @@ class Base extends AV.Object {
         obj.save();
     }
 
-    static count() {
+    static count(attrs = undefined) {
         const query = new AV.Query(this);
+        if(attrs) {
+            Object.keys(attrs).forEach(k => {
+                query.equalTo(k, attrs[k])
+            });
+        }
         return query.count();
     }
 }
