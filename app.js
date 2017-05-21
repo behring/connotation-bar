@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var AV = require('leanengine');
 var morgan = require('morgan');
 global.appRoot = path.resolve(__dirname);
-global.baseUrl = 'http://connotation-bar.leanapp.cn';
+global.baseUrl = 'http://neihanba.leanapp.cn';
 global.previewThumbnail = '?imageMogr2/thumbnail/400/crop/400x300';
 global.previewFirstFrame = '?vframe/jpg/offset/0/w/400/h/300';
 
