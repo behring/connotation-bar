@@ -58,14 +58,14 @@ if (isDev) {
     });
 } else {
     app.use(express.static('public'));
-    app.use(function(req, res, next) {
-        // 如果任何一个路由都没有返回响应，则抛出一个 404 异常给后续的异常处理器
-        if (!res.headersSent) {
-            var err = new Error('Not Found');
-            err.status = 404;
-            next(err);
-        }
-    });
+    // app.use(function(req, res, next) {
+    //     // 如果任何一个路由都没有返回响应，则抛出一个 404 异常给后续的异常处理器
+    //     if (!res.headersSent) {
+    //         var err = new Error('Not Found');
+    //         err.status = 404;
+    //         next(err);
+    //     }
+    // });
 
     // 端口一定要从环境变量 `LEANCLOUD_APP_PORT` 中获取。
 // LeanEngine 运行时会分配端口并赋值到该变量。
