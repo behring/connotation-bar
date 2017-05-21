@@ -46,9 +46,14 @@
   align-items: center;
   justify-content: center;
 
+  .pagination{
+    margin-right: 20px;
+  }
+
   .text-total-pages {
-    padding: 0 20px;
+    display: inline-block;
     font-size: 16px;
+    height: 32px;
     line-height: 32px;
   }
 }
