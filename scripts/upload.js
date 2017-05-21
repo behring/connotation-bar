@@ -7,26 +7,25 @@ AV.init({
 });
 // var resouresDir =  './scrapy_spider/resources/picture/full/';
 var resouresDir =  './scrapy_spider/resources/file/full/';
-var files = fs.readdirSync(resouresDir);
+var fileNames = fs.readdirSync(resouresDir);
+var index = 0;
 
-files.map((file,index) => {
-
-    setTimeout(()=>{
-        var fileBuffer = fs.readFileSync(resouresDir + file);
-        File.queryOneBy({name: file}).then((uploadedFile)=>{
-            if(uploadedFile) {
-                console.log('file   '+ uploadedFile.get('name')+ '   is exist!');
-            }else {
-                var uploadFile = new AV.File(file, fileBuffer);
-                uploadFile.save().then(function(uploadedFile) {
-                    // 文件保存成功
-                    console.log(index + ': ' + uploadedFile.url());
-                }).catch(error => {
-                    console.error(error);
-                });
-            }
-
-        });
-    },200*index);
-
-});
+function queryAndUploadFile(fileName) {
+    var fileBuffer = fs.readFileSync(resouresDir + fileName);
+    File.queryOneBy({name: fileName}).then((uploadedFile)=>{
+        if(uploadedFile) {
+            console.log('file   '+ uploadedFile.get('name')+ '   is exist!');
+        }else {
+            var uploadFile = new AV.File(fileName, fileBuffer);
+            uploadFile.save().then(function(uploadedFile) {
+                // 文件保存成功
+                console.log(index + ': ' + uploadedFile.url());
+                index++;
+                queryAndUploadFile(fileNames[index]);
+            }).catch(error => {
+                console.error(error);
+            });
+        }
+    });
+}
+queryAndUploadFile(fileNames[index]);

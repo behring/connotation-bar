@@ -42,7 +42,7 @@ router.get('/:category/:number', function(req, res, next) {
 router.get('/:category', function(req, res, next) {
     let category = req.params.category;
     let page = req.query.page;
-
+    let kind = req.query.kind;
     res.format({
         'text/html': function(){
             var perPage = 18;
@@ -52,7 +52,8 @@ router.get('/:category', function(req, res, next) {
                         pictures: pictures,
                         user: req.currentUser,
                         currentPage: page,
-                        totalPages: Math.ceil(count/18)
+                        totalPages: Math.ceil(count/18),
+                        kind:kind
                     });
                 }).catch(error => {
                     console.error(error);

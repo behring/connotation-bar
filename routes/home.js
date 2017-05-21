@@ -4,8 +4,13 @@ let Picture = require('../models/picture');
 let User = require('.././models/user');
 
 router.get('/', function(req, res) {
-    Picture.pagination(1,24).then(pictures => {
-        res.render('home/home', { pictures: pictures, user: req.currentUser});
+    var responseData = {};
+    Picture.pagination(1,18,{category:'色系军团'}).then(sexis => {
+        responseData.sexis = sexis;
+        Picture.pagination(1,18,{category:'搞笑动图'}).then(funnyGifs => {
+            responseData.funnyGifs = funnyGifs;
+            res.render('home/home', Object.assign({},responseData,{kind:'首页'},{user: req.currentUser}));
+        });
     });
 
 });

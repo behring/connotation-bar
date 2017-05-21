@@ -30,8 +30,12 @@ class PictureSpider(scrapy.Spider):
     #first page url http://xiaojiulou.moli8.com/gif/6914.html
     #last page url http://xiaojiulou.moli8.com/gif/4089.html
 
+    #evil git
+    #first page url http://xiaojiulou.moli8.com/xieegif/6966.html
+    #last page url http://xiaojiulou.moli8.com/xieegif/6966.html
+
     start_urls = [
-        "http://xiaojiulou.moli8.com/gif/6914.html"
+        "http://xiaojiulou.moli8.com/xieegif/6966.html"
     ]
 
     def parse(self, response):

@@ -10,18 +10,27 @@
   <div>
     <h4>热门漫画</h4>
     <div class="row">
-        <% for(var i=0; i< pictures.length; i++) {%>
+        <% for(var i=0; i< sexis.length; i++) {%>
       <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-          <% var picture = pictures[i]; %>
+          <% var picture = sexis[i]; %>
           <% include ../partials/grid-item.ejs %>
       </div>
         <% } %>
+      <a href="/pictures/色系军团?page=1" target="_blank"><button class="btn-more btn btn-primary center-block">查看更多>></button></a>
     </div>
   </div>
 
   <div>
     <h4>搞笑动图</h4>
-    <p><%= pictures.length %> </p>
+    <div class="row">
+        <% for(var i=0; i< funnyGifs.length; i++) {%>
+      <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+          <% var picture = funnyGifs[i]; %>
+          <% include ../partials/grid-item.ejs %>
+      </div>
+        <% } %>
+      <a href="/pictures/搞笑动图?page=1" target="_blank"><button class="btn-more btn btn-primary center-block">查看更多>></button></a>
+    </div>
   </div>
 </div>
 <% include ../partials/footer.ejs %>
