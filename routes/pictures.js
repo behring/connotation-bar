@@ -20,10 +20,6 @@ router.get('/', function(req, res) {
 router.get('/:category/:number', function(req, res, next) {
     let category = req.params.category;
     let number = parseInt(req.params.number);
-
-    console.log(category);
-    console.log(number);
-
     res.format({
         'text/html': function(){
             Picture.queryOneBy({category, number}).then(picture => {

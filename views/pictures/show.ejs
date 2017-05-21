@@ -5,9 +5,15 @@
     <% include ../partials/head.ejs %>
 </head>
 <body class="picture show">
+
 <div class="container center">
-    <h3><%= picture.get('title') %></h3>
+    <h4><%= picture.get('title') %></h4>
     <img src="<%= picture.get('qiniu_url') %>">
+
+    <ul id="paginator" class="box-paginator pager">
+        <li class="previous"><a href="/pictures/<%=picture.get('category')%>/<%= parseInt(picture.get('number'))-1 > 0 ? parseInt(picture.get('number'))-1 : 0%>"><span>&larr;</span> 上一个</a></li>
+        <li class="next"><a href="/pictures/<%=picture.get('category')%>/<%= parseInt(picture.get('number'))+1 %>">下一个 <span>&rarr;</span></a></li>
+    </ul>
 </div>
 </body>
 </html>
