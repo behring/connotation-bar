@@ -11,6 +11,8 @@ class PictureItem(scrapy.Item):
     # define the fields for your item here like:
     number = scrapy.Field()
     title = scrapy.Field()
+    prolusion = scrapy.Field()
+    closing = scrapy.Field()
     original_url = scrapy.Field()
     category = scrapy.Field()
     file_name = scrapy.Field()

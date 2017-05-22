@@ -6,6 +6,7 @@ let mlyzJson = require('../scrapy_spider/mlyz.json');
 let sexiaozuJson = require('../scrapy_spider/sexiaozu.json');
 let funnyGifJson = require('../scrapy_spider/funny-gif.json');
 let evilGifJson = require('../scrapy_spider/evil-gif.json');
+let neihanJson = require('../scrapy_spider/neihan.json');
 
 let resultJson = require('../data/Picture.json');
 let File = require('../models/file');
@@ -25,7 +26,7 @@ function getFile(picture) {
             newPictureJson.push(Object.assign({},picture,{qiniu_url: file.get('url')} ));
             fs.writeFileSync('./data/Picture.json', JSON.stringify(newPictureJson) , 'utf-8');
             index++;
-            getFile(evilGifJson[index]);
+            getFile(neihanJson[index]);
         });
     }else {
         console.info('update finish!');
@@ -33,5 +34,5 @@ function getFile(picture) {
 
 }
 
-getFile(evilGifJson[index]);
+getFile(neihanJson[index]);
 

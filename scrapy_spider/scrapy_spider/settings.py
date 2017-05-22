@@ -66,8 +66,8 @@ ROBOTSTXT_OBEY = True
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
 #    'scrapy_spider.pipelines.SomePipeline': 300,
-#    'scrapy_spider.pipelines.PicturesPipeline': 1,
-    'scrapy_spider.pipelines.FilePipeline': 1
+    'scrapy_spider.pipelines.PicturesPipeline': 1,
+#    'scrapy_spider.pipelines.FilePipeline': 1
 }
 IMAGES_STORE = './resources/picture'
 FILES_STORE = './resources/file'
@@ -79,7 +79,8 @@ IMAGES_EXPIRES = 30
 #    'small': (200, 150),
 #    'big': (400, 300)
 #}
-
+#默认unicode编码
+FEED_EXPORT_ENCODING = 'utf-8'
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True

@@ -22,7 +22,7 @@ router.post('/', function (req, res, next) {
     // 设置邮箱
     user.setEmail(email);
     user.signUp().then(function (loginedUser) {
-        res.render('sign-in/sign-in', {error:new Error('注册成功！请登录')});
+        res.render('sign-in/sign-in', {error:new Error('注册成功,请到邮箱中激活账号')});
     }, function (error) {
         if (error.code === 203) {
             res.render('sign-up/sign-up',{error:new Error('此邮箱已注册',error.code)});

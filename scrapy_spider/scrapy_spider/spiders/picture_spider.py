@@ -30,18 +30,24 @@ class PictureSpider(scrapy.Spider):
     #first page url http://xiaojiulou.moli8.com/gif/6914.html
     #last page url http://xiaojiulou.moli8.com/gif/4089.html
 
-    #evil git
+    #evil gif
     #first page url http://xiaojiulou.moli8.com/xieegif/6966.html
-    #last page url http://xiaojiulou.moli8.com/xieegif/6966.html
+    #last page url http://xiaojiulou.moli8.com/xieegif/5749.html
+
+    #neihan
+    #first page url http://xiaojiulou.moli8.com/neihan/6907.html
+    #last page url http://xiaojiulou.moli8.com/neihan/6907.html
 
     start_urls = [
-        "http://xiaojiulou.moli8.com/xieegif/6966.html"
+        "http://xiaojiulou.moli8.com/neihan/6907.html"
     ]
 
     def parse(self, response):
         item = PictureItem()
         item['number'] = PictureSpider.number
         item['title'] = response.xpath('//h1/text()').extract_first()
+        item['prolusion'] = response.xpath("//div[@id='imgshowdiv']/span/text()").extract_first()
+        item['closing'] = response.xpath("//div[@id='imgshowdiv']/div[3]/div[2]/p/text()").extract_first()
         item['original_url'] = response.xpath("//div[@id='imgshowdiv']//img/@src").extract_first()
         item['category'] = response.xpath("//div[@id='imgshowdiv']/b/a/text()").extract_first()
         PictureSpider.number += 1

@@ -5,8 +5,8 @@ AV.init({
     appId: 'qhJNhVXqGVUzKMhsEmddftqd-gzGzoHsz',
     appKey: 'PSvkSKv6TkBRJFOFpG2BXM9q'
 });
-// var resouresDir =  './scrapy_spider/resources/picture/full/';
-var resouresDir =  './scrapy_spider/resources/file/full/';
+var resouresDir =  './scrapy_spider/resources/picture/full/';
+// var resouresDir =  './scrapy_spider/resources/file/full/';
 var fileNames = fs.readdirSync(resouresDir);
 var index = 0;
 
