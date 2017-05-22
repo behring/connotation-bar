@@ -8,8 +8,10 @@
 
 <div class="container center">
     <h4><%= picture.get('title') %></h4>
-    <img src="<%= picture.get('qiniu_url') %>">
 
+    <p><%= picture.get('prolusion') %></p>
+    <img src="<%= picture.get('qiniu_url') %>">
+    <p><%= picture.get('closing') %></p>
     <%if (user) { %>
     <ul id="paginator" class="box-paginator pager">
         <li class="previous"><a href="/pictures/<%=picture.get('category')%>/<%= parseInt(picture.get('number'))-1 > 0 ? parseInt(picture.get('number'))-1 : 0%>"><span>&larr;</span> 上一个</a></li>
