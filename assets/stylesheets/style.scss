@@ -7,6 +7,13 @@
   width:100%;
 }
 
+.thumbnail {
+  .cover {
+    padding-bottom: 75%;
+    background-size: cover;
+  }
+}
+
 .sign-in-sign-up-content {
   padding: 10px 0 20px;
 }

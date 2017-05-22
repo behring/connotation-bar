@@ -1,9 +1,9 @@
 <a href="/pictures/<%= picture.get('category') %>/<%= picture.get('number') %>">
     <div class="thumbnail">
         <% if (picture.get('category').indexOf('动图')!=-1) { %>
-        <img src=<%=picture.get('qiniu_url') + previewFirstFrame %> alt="...">
+        <div class="cover" style="background-image: url('<%=picture.get('qiniu_url') + previewFirstFrame %>');"></div>
         <% } else {%>
-        <img src=<%=picture.get('qiniu_url') + previewThumbnail %> alt="...">
+        <div class="cover"style="background-image: url('<%=picture.get('qiniu_url') + previewThumbnail %>');"></div>
         <% } %>
         <div class="caption">
             <span><%= picture.get('title') %></span>
