@@ -1,3 +1,22 @@
+strong {
+  color: crimson;
+  font-size: 18px;
+}
+
+.modal-dialog {
+  margin-top: 200px;
+}
+
+.sign-in-prompt {
+  width: 90%;
+}
+
+.forget-password {
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 400;
+}
+
 .thumbnail > .caption > span {
   display: block;
   overflow:hidden;

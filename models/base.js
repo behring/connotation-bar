@@ -62,7 +62,7 @@ class Base extends AV.Object {
         return query.get(id);
     }
 
-    static pagination(page, count = 20, attrs = undefined) {
+    static pagination(page, count = 20, attrs = undefined, sortAttr = undefined, isAsc = true) {
         if(page > 0 && count > 0) {
             const query = new AV.Query(this);
 
@@ -78,6 +78,16 @@ class Base extends AV.Object {
             }
             query.skip((page - 1) * count);
             query.limit(count);
+            if(sortAttr) {
+                if(isAsc) {
+                    //升序排列
+                    query.ascending(sortAttr);
+                }else {
+                    //降序排列
+                    query.descending(sortAttr);
+                }
+            }
+
             return query.find();
         }
     }

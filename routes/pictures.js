@@ -20,12 +20,19 @@ router.get('/', function(req, res) {
 router.get('/:category/:number', function(req, res, next) {
     let category = req.params.category;
     let number = parseInt(req.params.number);
+    let homeCategorys = ['色系军团','搞笑动图', '内涵图'];
+    let isLimited = true;
     res.format({
-        'text/html': function(){
+        'text/html': function() {
+            if(homeCategorys.indexOf(category)!==-1 && number<defaultShowPictureCount) {
+                isLimited = false;
+            }
+
             Picture.queryOneBy({category, number}).then(picture => {
                 res.render('pictures/show', {
                     picture: picture,
-                    user: req.currentUser
+                    user: req.currentUser,
+                    isLimited: isLimited
                 });
             }).catch(error => {
                 console.error(error);

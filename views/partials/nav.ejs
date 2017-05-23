@@ -12,7 +12,7 @@
                 <!--<img alt="Brand" src="">-->
             </a>
             <%if (user) { %>
-            <button class="visible-xs btn btn-link"><a href="/mine">我的趣币：<%= user.get('funnyCoin') || 0 %></a></button>
+            <button class="visible-xs btn btn-link"><a href="/mine?menu=个人信息">我的</a></button>
             <%} else {%>
             <button class="visible-xs btn btn-link"><a href="/sign-in">登录</a></button>
             <% } %>
@@ -76,3 +76,16 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
+<% include sign-in-prompt-modal.ejs %>
+<% include payment-modal.ejs %>
+
+<%if (!user) { %>
+<div class="sign-in-prompt center-block">
+    <div class="alert alert-info text-center">
+        更多精彩尽请 <a href="/sign-in">登录</a>
+        | 还没账号？<a href="/sign-up">马上注册</a>
+    </div>
+</div>
+<% } %>
+

@@ -4,20 +4,26 @@
     <title><%= picture.get('category') %></title>
     <% include ../partials/head.ejs %>
 </head>
-<body class="picture show">
+<body class="picture show" data-user="<%= user %>" data-limited="<%= isLimited %>">
 <% include ../partials/nav.ejs %>
 
 <div class="container center">
     <h4><%= picture.get('title') %></h4>
 
     <p><%= picture.get('prolusion') %></p>
+    <%if (!isLimited) { %>
     <img src="<%= picture.get('original_url') %>">
+    <%} else {%>
+    <p><strong>登录后才能浏览</strong></p>
+    <img src="/images/icon-stop.png">
+    <% } %>
     <p><%= picture.get('closing') %></p>
 
+    <%if (user && !isLimited) { %>
     <img src="/images/collection-qrcode.jpeg">
-    <p>觉得不错就支持下吧，5毛能看100篇哦~</p>
+    <p>觉得不错就支持下吧，1分钱就能多看一篇~</p>
+    <p>(最少一次1元钱，可兑换<strong>10000趣币</strong>哦)</p>
 
-    <%if (user) { %>
     <ul id="paginator" class="box-paginator pager">
         <li class="previous"><a href="/pictures/<%=picture.get('category')%>/<%= parseInt(picture.get('number'))-1 > 0 ? parseInt(picture.get('number'))-1 : 0%>"><span>&larr;</span> 上一个</a></li>
         <li class="next"><a href="/pictures/<%=picture.get('category')%>/<%= parseInt(picture.get('number'))+1 %>">下一个 <span>&rarr;</span></a></li>
