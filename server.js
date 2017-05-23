@@ -57,7 +57,7 @@ if (isDev) {
         console.log('App (dev) is now running on port 3000!');
     });
 
-    app.use(express.static('public'));
+    // app.use(express.static('public'));
 } else {
     app.use(express.static('public'));
     // app.use(function(req, res, next) {

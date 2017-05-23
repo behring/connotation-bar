@@ -21,6 +21,9 @@ router.post('/', function (req, res, next) {
     user.setPassword(password);
     // 设置邮箱
     user.setEmail(email);
+
+    user.set('funnyCoin', 1000);
+
     user.signUp().then(function (loginedUser) {
         res.render('sign-in/sign-in', {error:new Error('注册成功,请到邮箱中激活账号')});
     }, function (error) {

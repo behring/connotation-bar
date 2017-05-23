@@ -44,6 +44,7 @@ app.use('/sign-in', require('./routes/sign-in'));
 app.use('/sign-up', require('./routes/sign-up'));
 app.use('/sign-out', require('./routes/sign-out'));
 app.use('/pictures', require('./routes/pictures'));
+app.use('/mine', require('./routes/mine'));
 app.use('/wechat', require('./routes/wechat'));
 app.use('/todos', require('./routes/todos'));
 

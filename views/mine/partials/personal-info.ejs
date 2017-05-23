@@ -1,0 +1,25 @@
+<div class="personal-info">
+    <h4>个人信息</h4>
+    <div class="row">
+        <div class="info col-xs-offset-1 col-xs-10">
+            <p>邮箱地址：<%= user.getUsername()%></p>
+            <p>趣币数量：<strong><%= user.get('funnyCoin') || 0 %></strong>&nbsp;币</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10">
+            <p>微信扫描或者手机端长按二维码赞助内涵吧!</p>
+            <p><strong>1毛钱</strong>兑换<strong>1000趣币</strong>，畅快看漫画趣图！</p>
+            <p><strong>一定要在付款的备注中留下自己的邮箱，否则无法获取趣币！</strong></p>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 col-sm-5 text-center">
+            <img src="images/collection-qrcode.jpeg" class="img-responsive">
+            <p>(赞助后，趣币在2-10分钟内到账，凌晨除外)</p>
+        </div>
+    </div>
+</div>

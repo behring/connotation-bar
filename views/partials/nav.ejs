@@ -12,7 +12,7 @@
                 <!--<img alt="Brand" src="">-->
             </a>
             <%if (user) { %>
-            <button class="visible-xs btn btn-link"><a href="/sign-out">退出</a></button>
+            <button class="visible-xs btn btn-link"><a href="/mine">我的趣币：<%= user.get('funnyCoin') || 0 %></a></button>
             <%} else {%>
             <button class="visible-xs btn btn-link"><a href="/sign-in">登录</a></button>
             <% } %>
@@ -66,7 +66,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-xs">
                 <%if (user) { %>
-                <li><a href="#"><%= user.getUsername()%></a></li>
+                <li><a href="/mine?menu=个人信息">个人中心</a></li>
                 <li><a  href="/sign-out">退出</a></li>
                 <%} else {%>
                 <li><a  href="/sign-in">登录</a></li>
