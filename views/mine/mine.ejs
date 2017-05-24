@@ -9,24 +9,24 @@
 <div class="container mine">
     <div class="row">
         <ul class="nav nav-pills nav-stacked col-sm-2 vertical-menu hidden-xs">
-            <li role="presentation" class="<%= menu==='个人信息' ? 'active': ''%>"><a href="/mine?menu=个人信息">个人信息</a></li>
-            <li role="presentation" class="<%= menu==='浏览历史' ? 'active': ''%>"><a href="/mine?menu=浏览历史">浏览历史</a></li>
-            <li role="presentation" class="<%= menu==='赞助记录' ? 'active': ''%>"><a href="/mine?menu=赞助记录">赞助记录</a></li>
+            <li role="presentation" class="<%= menu===0 ? 'active': ''%>"><a href="/mine">个人信息</a></li>
+            <li role="presentation" class="<%= menu===1 ? 'active': ''%>"><a href="/mine/purchased">购买内容</a></li>
+            <!--<li role="presentation" class="<%= menu==='赞助记录' ? 'active': ''%>"><a href="/mine?menu=赞助记录">赞助记录</a></li>-->
         </ul>
 
         <ul class="nav nav-tabs visible-xs">
-            <li role="presentation" class="<%= menu==='个人信息' ? 'active': ''%>"><a href="/mine?menu=个人信息">个人信息</a></li>
-            <li role="presentation" class="<%= menu==='浏览历史' ? 'active': ''%>"><a href="/mine?menu=浏览历史">浏览历史</a></li>
-            <li role="presentation" class="<%= menu==='赞助记录' ? 'active': ''%>"><a href="/mine?menu=赞助记录">赞助记录</a></li>
+            <li role="presentation" class="<%= menu===0 ? 'active': ''%>"><a href="/mine">个人信息</a></li>
+            <li role="presentation" class="<%= menu===1 ? 'active': ''%>"><a href="/mine/purchased">购买内容</a></li>
+            <!--<li role="presentation" class="<%= menu==='赞助记录' ? 'active': ''%>"><a href="/mine?menu=赞助记录">赞助记录</a></li>-->
         </ul>
 
         <div class="col-sm-offset-2">
-            <% if (menu === '个人信息') {%>
+            <% if (menu === 0) {%>
             <% include partials/personal-info.ejs %>
-            <%} else if (menu === '浏览历史') {%>
-            <% include partials/visited-history.ejs %>
-            <%} else if (menu === '赞助记录') {%>
-            <% include partials/payment-record.ejs %>
+            <%} else if (menu === 1) {%>
+            <% include partials/purchased.ejs %>
+            <!--<%} else if (menu === '赞助记录') {%>-->
+            <!--<% include partials/payment-record.ejs %>-->
             <%}%>
         </div>
     </div>

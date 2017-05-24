@@ -30,13 +30,10 @@ router.get('/:category/:number', function(req, res, next) {
 
             Picture.queryOneBy({category, number}).then(picture => {
                 if(req.currentUser) {
-                    PaymentRecord.queryOneBy({picture: picture.get('objectId'), targetUser: req.currentUser}).then(paymentRecord =>{
+                    PaymentRecord.queryOneBy({picture: picture, user: req.currentUser}).then(paymentRecord =>{
                         let isPayment = !!paymentRecord;
                         //如果支付了，就不限制查看
                         isLimited = !isPayment;
-                        console.log('--------------is payment--------------------');
-                        console.log(isPayment);
-
                         res.render('pictures/show', {
                             picture: picture,
                             user: req.currentUser,

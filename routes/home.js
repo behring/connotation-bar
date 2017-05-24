@@ -27,24 +27,27 @@ router.get('/', function(req, res) {
 });
 
 router.get('/payment', function (req, res, next) {
-    let objectId = req.query.objectId;
-    let userFunnyCoin = req.currentUser.get('funnyCoin');
-    if(userFunnyCoin >= funnyCoinPerPicture) {
-        let paymentRecord = new PaymentRecord();
-        paymentRecord.set('picture', objectId);
-        paymentRecord.set('targetUser', req.currentUser);
-        paymentRecord.save().then((paymentRecord)=> {
-            req.currentUser.set('funnyCoin',userFunnyCoin - funnyCoinPerPicture);
-            req.currentUser.save().then((user) => {
-                res.redirect(req.get('referer'))
+    let pictureId = req.query.pictureId;
+
+    Picture.find(pictureId).then(picture => {
+        let userFunnyCoin = req.currentUser.get('funnyCoin');
+        if(userFunnyCoin >= funnyCoinPerPicture) {
+            let paymentRecord = new PaymentRecord();
+            paymentRecord.set('picture', picture);
+            paymentRecord.set('user', req.currentUser);
+            paymentRecord.save().then((paymentRecord)=> {
+                req.currentUser.set('funnyCoin',userFunnyCoin - funnyCoinPerPicture);
+                req.currentUser.save().then((user) => {
+                    res.redirect(req.get('referer'))
+                });
+            }).catch((error)=>{
+                console.error(error);
+                next(error);
             });
-        }).catch((error)=>{
-            console.error(error);
-            next(error);
-        });
-    }else {
-        next();
-    }
+        }else {
+            next();
+        }
+    });
 });
 
 

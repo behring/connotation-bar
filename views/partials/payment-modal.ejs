@@ -15,7 +15,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">算了吧</button>
-                <a href="<%= user.get('funnyCoin') < 100 ? '/mine?menu=个人信息' : '/payment?objectId='+ picture.get('objectId') %>">
+                <a href="<%= user.get('funnyCoin') < 100 ? '/mine?menu=个人信息' : '/payment?pictureId='+ picture.get('objectId') %>">
                     <button type="button" class="btn btn-primary">
                         <%= user.get('funnyCoin') < 100 ? '去赞助' : '我要看' %></button>
                 </a>

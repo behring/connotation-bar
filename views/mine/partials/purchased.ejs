@@ -1,0 +1,11 @@
+<div class="personal-info">
+    <h4>个人信息</h4>
+    <div class="row">
+        <% for(var i=0; i< paymentRecords.length; i++) {%>
+        <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+            <% var picture = paymentRecords[i].get('picture'); %>
+            <% include ../../partials/grid-item.ejs %>
+        </div>
+        <% } %>
+    </div>
+</div>

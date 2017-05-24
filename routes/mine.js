@@ -1,13 +1,27 @@
 'use strict';
 let router = require('express').Router();
+let PaymentRecord = require('../models/payment-record');
 
 router.get('/', function(req, res, next) {
-    let menu = req.query.menu;
     res.format({
         'text/html': function(){
             res.render('mine/mine', {
-                menu: menu,
-                user: req.currentUser
+                user: req.currentUser,
+                menu: 0
+            });
+        }
+    });
+});
+
+router.get('/purchased', function(req, res, next) {
+    res.format({
+        'text/html': function(){
+            PaymentRecord.queryBy({user: req.currentUser}, ['picture']).then(paymentRecords => {
+                res.render('mine/mine', {
+                    user: req.currentUser,
+                    paymentRecords: paymentRecords,
+                    menu: 1
+                });
             });
         }
     });

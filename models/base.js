@@ -29,16 +29,14 @@ class Base extends AV.Object {
         return obj.save();
     }
 
-    static queryBy(attrs) {
+    static queryBy(attrs, relations=[]) {
         const query = new AV.Query(this);
-
         Object.keys(attrs).forEach(k => {
-            if (k.endsWith("Id")){
-                const objClassName = k.replace(/Id$/, '');
-                query.equalTo(objClassName, AV.Object.createWithoutData(capitalizeFirstLetter(objClassName), attrs[k]));
-            } else {
-                query.equalTo(k, attrs[k])
-            }
+            query.equalTo(k, attrs[k]);
+        });
+
+        relations.forEach(relation => {
+            query.include(relation);
         });
 
         return query.find();
