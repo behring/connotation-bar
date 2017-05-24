@@ -4,4 +4,21 @@
     padding: 0;
     border-radius: 4px;
   }
+
+  h4 {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .content {
+      border: solid 1px lightgrey;
+    }
+
+    h4 {
+      text-align: left;
+      display: block;
+      padding: 0 0 10px 10px;
+      border-bottom: solid 1px lightgrey;
+    }
+  }
 }

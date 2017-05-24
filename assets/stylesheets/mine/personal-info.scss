@@ -1,23 +1,7 @@
 .personal-info {
-
-  h4 {
-    display: none;
-  }
+  padding-top: 10px;
 
   .info {
-    padding-top: 20px;
-  }
-
-  @media (min-width: 768px) {
-
-    margin-left: 20px;
-    padding: 10px;
-    border: solid 1px lightgrey;
-
-    h4 {
-      display: block;
-      padding-bottom: 10px;
-      border-bottom: solid 1px lightgrey;
-    }
+    padding: 20px;
   }
 }
