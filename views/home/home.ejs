@@ -11,11 +11,12 @@
     <h4>热门漫画</h4>
     <div class="row">
         <% for(var i=0; i< sexis.length; i++) {%>
-      <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-          <% var picture = sexis[i]; %>
-          <% include ../partials/grid-item.ejs %>
-      </div>
+          <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
+              <% var picture = sexis[i]; %>
+              <% include ../partials/grid-item.ejs %>
+          </div>
         <% } %>
+
         <%if (user) { %>
           <a href="/pictures/色系军团?page=1" target="_blank"><button class="btn-more btn btn-primary center-block">查看更多>></button></a>
         <% } %>

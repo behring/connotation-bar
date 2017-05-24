@@ -6,7 +6,7 @@
                 <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
             </div>
             <div class="modal-body">
-                <% if( user.get('funnyCoin') < 100) { %>
+                <% if(user.get('funnyCoin') < 100) { %>
                 你当前剩余趣币：<strong><%= user.get('funnyCoin') || 0%></strong> ，无法查看当前内容。<a href="">去赞助一下吧</a>
                 <% } else { %>
                 你当前剩余趣币：<strong><%= user.get('funnyCoin') || 0%></strong> ，是否愿意花费100趣币查看当前内容？
@@ -15,7 +15,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="javascript:history.back(-1);">算了吧</button>
-                <a href="<%= user.get('funnyCoin') < 100 ? '/mine?menu=个人信息' : '/sign-up' %>">
+                <a href="<%= user.get('funnyCoin') < 100 ? '/mine?menu=个人信息' : '/payment?objectId='+ picture.get('objectId') %>">
                     <button type="button" class="btn btn-primary">
                         <%= user.get('funnyCoin') < 100 ? '去赞助' : '我要看' %></button>
                 </a>

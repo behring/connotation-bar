@@ -14,9 +14,6 @@ $(document).ready(function(){
     if($('.picture.show').length>0) {
         var user = $('.picture.show').data('user');
         var limited = $('.picture.show').data('limited');
-        console.log('---------console.log(isLimited);------------');
-        console.log(limited);
-        console.log(typeof limited);
         if(limited) {
             if(user) {
                 showModal('#payment-modal');

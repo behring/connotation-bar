@@ -7,6 +7,12 @@
 <body class="picture show" data-user="<%= user %>" data-limited="<%= isLimited %>">
 <% include ../partials/nav.ejs %>
 
+<%if (user) { %>
+<% include ../partials/payment-modal.ejs %>
+<%} else { %>
+<% include ../partials/sign-in-prompt-modal.ejs %>
+<% } %>
+
 <div class="container center">
     <h4><%= picture.get('title') %></h4>
 
