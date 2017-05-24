@@ -138,24 +138,29 @@ footer .funny-coin-prompt {
   background-color: whitesmoke;
   padding: 0;
   border-radius: 4px;
-}.personal-info h4 {
+}
+
+.mine h4 {
   display: none;
 }
 
-.personal-info .info {
-  padding-top: 20px;
-}
-
 @media (min-width: 768px) {
-  .personal-info {
-    margin-left: 20px;
-    padding: 10px;
+  .mine .content {
     border: solid 1px lightgrey;
   }
 
-  .personal-info h4 {
+  .mine h4 {
+    text-align: left;
     display: block;
-    padding-bottom: 10px;
+    padding: 0 0 10px 10px;
     border-bottom: solid 1px lightgrey;
   }
+}.personal-info {
+  padding-top: 10px;
+}
+
+.personal-info .info {
+  padding: 20px;
+}.purchased {
+  padding-top: 10px;
 }
