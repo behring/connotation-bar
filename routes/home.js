@@ -2,7 +2,7 @@
 let router = require('express').Router();
 let Picture = require('../models/picture');
 let PaymentRecord = require('../models/payment-record');
-
+let WechatUser = require('../models/wechat-user');
 
 router.get('/', function(req, res) {
     let count = defaultShowPictureCount;
@@ -50,5 +50,27 @@ router.get('/payment', function (req, res, next) {
     });
 });
 
+router.get('/wechat/:category/:number', function(req, res, next) {
+    let category = req.params.category;
+    let number = parseInt(req.params.number);
+    let wechatUserId = req.query.wechatUserId;
+    res.format({
+        'text/html': function() {
+            WechatUser.find(wechatUserId).then(wechatUser => {
+                let islimited = (wechatUser.get('visitedPictureCount') == wechatPerVisitedCount);
+                Picture.queryOneBy({category, number}).then(picture => {
+                    res.render('pictures/show', {
+                        picture: picture,
+                        user: req.currentUser,
+                        isLimited: islimited
+                    });
+                }).catch(error => {
+                    console.error(error);
+                    next(error);
+                });
+            });
+        }
+    });
+});
 
 module.exports = router;
