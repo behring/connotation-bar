@@ -2,18 +2,6 @@
 var express = require('express');
 var AV = require('leanengine');
 
-//执行lean deploy部署一定要用这段
-// AV.init({
-//   appId: process.env.LEANCLOUD_APP_ID,
-//   appKey: process.env.LEANCLOUD_APP_KEY,
-//   masterKey: process.env.LEANCLOUD_APP_MASTER_KEY
-// });
-
-//开发用这段，通过npm run development启动，修改文件自动刷新
-AV.init({
-    appId: 'qhJNhVXqGVUzKMhsEmddftqd-gzGzoHsz',
-    appKey: 'PSvkSKv6TkBRJFOFpG2BXM9q'
-});
 
 // 如果不希望使用 masterKey 权限，可以将下面一行删除
 AV.Cloud.useMasterKey();
@@ -21,12 +9,18 @@ AV.Cloud.useMasterKey();
 var app = require('./app');
 
 
-var isDev = process.env.NODE_ENV !== 'production';
+var isDev = (!process.env.NODE_ENV || process.env.NODE_ENV === 'dev');
 // local variables for all views
 app.locals.env = process.env.NODE_ENV || 'dev';
 app.locals.reload = true;
 
+const appId = 'qhJNhVXqGVUzKMhsEmddftqd-gzGzoHsz';
+const appKey = 'PSvkSKv6TkBRJFOFpG2BXM9q';
+
 if (isDev) {
+    //开发用这段，通过npm run development启动，修改文件自动刷新
+    AV.init({ appId, appKey });
+
     // static assets served by webpack-dev-middleware & webpack-hot-middleware for development
     var webpack = require('webpack'),
         webpackDevMiddleware = require('webpack-dev-middleware'),
@@ -57,8 +51,20 @@ if (isDev) {
         console.log('App (dev) is now running on port 3000!');
     });
 
-    // app.use(express.static('public'));
+    app.use(express.static('assets'));
 } else {
+
+    if(process.env.NODE_ENV === 'stage') {
+        AV.init({ appId, appKey });
+    }else {
+        //执行lean deploy部署一定要用这段
+        AV.init({
+            appId: process.env.LEANCLOUD_APP_ID,
+            appKey: process.env.LEANCLOUD_APP_KEY,
+            masterKey: process.env.LEANCLOUD_APP_MASTER_KEY
+        });
+    }
+
     app.use(express.static('public'));
     // app.use(function(req, res, next) {
     //     // 如果任何一个路由都没有返回响应，则抛出一个 404 异常给后续的异常处理器

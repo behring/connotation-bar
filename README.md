@@ -41,6 +41,16 @@ lean up
 lean deploy
 ```
 
+npm命令说明
+```
+  "scripts": {
+   "start": "node server.js",// 部署在leancloud上需要执行的生产环境命令
+   "dev": "nodemon server.js",//暂时没用了，之前leancloud todo项目使用的是nodemon,现在用webpack取代了
+   "development": "cross-env NODE_ENV=dev supervisor -i assets node server",//运行在开发环境
+   "stage": "webpack --config webpack.production.config.js -p & cross-env NODE_ENV=stage node server",//运行在类生产环境
+   "build": "webpack --config webpack.production.config.js"//打包生产环境
+  }
+```
 ## 相关文档
 
 * [云函数开发指南](https://leancloud.cn/docs/leanengine_cloudfunction_guide-node.html)
