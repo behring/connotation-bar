@@ -3,17 +3,17 @@ var express = require('express');
 var AV = require('leanengine');
 
 //执行lean deploy部署一定要用这段
-AV.init({
-  appId: process.env.LEANCLOUD_APP_ID,
-  appKey: process.env.LEANCLOUD_APP_KEY,
-  masterKey: process.env.LEANCLOUD_APP_MASTER_KEY
-});
+// AV.init({
+//   appId: process.env.LEANCLOUD_APP_ID,
+//   appKey: process.env.LEANCLOUD_APP_KEY,
+//   masterKey: process.env.LEANCLOUD_APP_MASTER_KEY
+// });
 
 //开发用这段，通过npm run development启动，修改文件自动刷新
-// AV.init({
-//     appId: 'qhJNhVXqGVUzKMhsEmddftqd-gzGzoHsz',
-//     appKey: 'PSvkSKv6TkBRJFOFpG2BXM9q'
-// });
+AV.init({
+    appId: 'qhJNhVXqGVUzKMhsEmddftqd-gzGzoHsz',
+    appKey: 'PSvkSKv6TkBRJFOFpG2BXM9q'
+});
 
 // 如果不希望使用 masterKey 权限，可以将下面一行删除
 AV.Cloud.useMasterKey();

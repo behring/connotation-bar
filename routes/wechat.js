@@ -23,13 +23,13 @@ router.use('/', wechat(config, function (req, res, next) {
         if (utils.isValidText(message.Content)) {
             utils.isLimitVisitPictureByUser(message.FromUserName).then((result) => {
                 if(result.isLimit) {
-                    res.reply('每天最多看三篇漫画哦，查看更多请登录neihanba.leanapp.cn注册');
+                    res.reply('您以达到当天漫画查看上限，查看更多请登录neihanba.leanapp.cn注册');
                 }else {
                     utils.replayRandomPictureToUser(res, result.user);
                 }
             }).catch(error => console.error(error));
         } else {
-            res.reply('嘿嘿，看不懂~~~');
+            res.reply('请回复数字选择您感兴趣的节目:\n1 内涵漫画');
         }
     }else if(message.MsgType==='image') {
         res.reply('这图....我也是醉了~~');
