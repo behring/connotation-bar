@@ -24,7 +24,7 @@ var productionConfig = [{
         }]
     },
     plugins: [
-        new CleanWebpackPlugin(['public']),
+        new CleanWebpackPlugin(['public/main']),
         new ExtractTextPlugin({
             filename: './[name]/index.css',
             allChunks: true
