@@ -5,7 +5,7 @@ const resultJson = require('../data/Comic.json')
 let number = 0
 const result = fengqiuhuangJson.reduce((sum, c) => {
     const title = c.title
-    let obj = sum[title] || {title: title, number: number++, original_urls: [], file_names: []}
+    let obj = sum[title] || {title: title, name: c.name, number: number++, original_urls: [], file_names: []}
     obj.original_urls.push(c.original_url)
     obj.file_names.push(c.file_name)
     return Object.assign({}, sum, {[title]: obj})

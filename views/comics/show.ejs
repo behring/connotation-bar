@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title><%= comic.get('name') %></title>
+    <% include ../partials/head.ejs %>
+</head>
+<body class="picture show" data-user="<%= user %>" data-limited="<%= isLimited %>">
+<% include ../partials/nav.ejs %>
+
+<%if (!user) { %>
+<% include ../partials/sign-in-prompt-modal.ejs %>
+<% } %>
+
+<div class="container center">
+    <h4><%= comic.get('title') %></h4>
+    <%if (!isLimited) { %>
+    <% for(var i=0; i< comic.get('original_urls').length; i++) {%>
+        <img src="<%= comic.get('original_urls')[i] %>"><br>
+    <% } %>
+    <%} else {%>
+    <p><strong>登录后才能浏览</strong></p>
+    <img src="/images/icon-stop.png">
+    <% } %>
+
+    <%if (user && !isLimited) { %>
+    <img src="/images/collection-qrcode.jpeg">
+    <p>觉得不错就支持下吧，1分钱就能多看一篇~</p>
+    <p>(最少一次1元钱，可兑换<strong>10000趣币</strong>哦)</p>
+
+    <ul id="paginator" class="box-paginator pager">
+        <li class="previous"><a href="/comics/<%= parseInt(comic.get('number'))-1 > 0 ? parseInt(comic.get('number'))-1 : 0%>?name=<%=comic.get('name')%>"><span>&larr;</span> 上一章</a></li>
+        <li class="next"><a href="/comics/<%= parseInt(comic.get('number'))+1 %>?name=<%=comic.get('name')%>">下一章 <span>&rarr;</span></a></li>
+    </ul>
+    <% } %>
+
+</div>
+</body>
+</html>

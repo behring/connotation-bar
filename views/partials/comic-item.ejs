@@ -1,0 +1,8 @@
+<a href="/comics/<%= comic.get('number') %>?name=<%= comic.get('name') %>">
+    <div class="thumbnail">
+        <div class="cover" style="background-image: url('<%=comic.get('original_urls')[0]%>');"></div>
+        <div class="caption">
+            <span><%= comic.get('title') %></span>
+        </div>
+    </div>
+</a>

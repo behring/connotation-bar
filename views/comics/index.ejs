@@ -8,12 +8,12 @@
 
 <div class="container">
   <div>
-    <h4><%= pictures[0].get('category')%></h4>
+    <h4><%= comics[0].get('name')%></h4>
     <div class="row">
-        <% for(var i=0; i< pictures.length; i++) {%>
+        <% for(var i=0; i< comics.length; i++) {%>
       <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
-          <% var picture = pictures[i]; %>
-          <% include ../partials/picture-item.ejs %>
+          <% var comic = comics[i]; %>
+          <% include ../partials/comic-item.ejs %>
       </div>
         <% } %>
     </div>
@@ -25,10 +25,10 @@
   </div>
 
   <ul id="paginator" class="box-paginator pager visible-xs">
-    <li class="previous"><a href="/pictures/<%=pictures[0].get('category')%>?page=<%= parseInt(currentPage)-1%>"><span>&larr;</span> 上一页</a></li>
+    <li class="previous"><a href="/comics?<%=comics[0].get('name')%>&page=<%= parseInt(currentPage)-1%>"><span>&larr;</span> 上一页</a></li>
     <span class="text-total-pages">第<%= currentPage %>页</span>
     <span class="text-total-pages">共<%= totalPages %>页</span>
-    <li class="next"><a href="/pictures/<%=pictures[0].get('category')%>?page=<%= parseInt(currentPage)+1%>">下一页 <span>&rarr;</span></a></li>
+    <li class="next"><a href="/comics?<%=comics[0].get('name')%>&page=<%= parseInt(currentPage)+1%>">下一页 <span>&rarr;</span></a></li>
   </ul>
 
 </div>

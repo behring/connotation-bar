@@ -13,7 +13,7 @@
         <% for(var i=0; i< sexis.length; i++) {%>
           <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
               <% var picture = sexis[i]; %>
-              <% include ../partials/grid-item.ejs %>
+              <% include ../partials/picture-item.ejs %>
           </div>
         <% } %>
 
@@ -29,7 +29,7 @@
         <% for(var i=0; i< funnyGifs.length; i++) {%>
       <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
           <% var picture = funnyGifs[i]; %>
-          <% include ../partials/grid-item.ejs %>
+          <% include ../partials/picture-item.ejs %>
       </div>
         <% } %>
         <%if (user) { %>
@@ -44,7 +44,7 @@
         <% for(var i=0; i< neihans.length; i++) {%>
       <div id="grid-item" class="col-xs-6 col-sm-4 col-md-3 col-lg-2">
           <% var picture = neihans[i]; %>
-          <% include ../partials/grid-item.ejs %>
+          <% include ../partials/picture-item.ejs %>
       </div>
         <% } %>
 
