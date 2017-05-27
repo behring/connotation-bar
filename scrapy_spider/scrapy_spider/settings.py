@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'scrapy_spider.spiders'
 #USER_AGENT = 'scrapy_spider (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -54,6 +54,8 @@ ROBOTSTXT_OBEY = True
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
 #    'scrapy_spider.middlewares.MyCustomDownloaderMiddleware': 543,
+#    'scrapy_spider.middlewares.JavaScriptMiddleware': 543, #键为中间件类的路径，值为中间件的顺序
+#    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':None, #禁止内置的中间件
 #}
 
 # Enable or disable extensions
@@ -67,7 +69,7 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {
 #    'scrapy_spider.pipelines.SomePipeline': 300,
     'scrapy_spider.pipelines.PicturesPipeline': 1,
-#    'scrapy_spider.pipelines.FilePipeline': 1
+#    'scrapy_spider.pipelines.FilePipeline': 1,
 }
 IMAGES_STORE = './resources/picture'
 FILES_STORE = './resources/file'

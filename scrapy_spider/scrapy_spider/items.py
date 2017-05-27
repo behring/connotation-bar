@@ -16,3 +16,11 @@ class PictureItem(scrapy.Item):
     original_url = scrapy.Field()
     category = scrapy.Field()
     file_name = scrapy.Field()
+
+class ComicItem(scrapy.Item):
+    # define the fields for your item here like:
+    number = scrapy.Field()
+    name = scrapy.Field()
+    title = scrapy.Field()
+    original_url = scrapy.Field()
+    file_name = scrapy.Field()
